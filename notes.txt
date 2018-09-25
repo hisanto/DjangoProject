@@ -1,0 +1,18 @@
+# ENV setup
+>cmd ma new project folder name
+> virtualenv -p path venv
+>source venv/bin/activate (for mac/linux)
+    venv\Scripts\activate (for WINs)
+> pip install django
+>pip freeze > requirements.txt
+
+#Django works in MVT( model, view and Template format)
+client request at view and performs operation at model(DB) and responce and gives result at Templete
+
+#Django Command
+>django-admin (help)
+>django-admin startproject Blog_project . (if . skipped, it just make fodler, dot with manage.py is made)
+>dir Blog_project
+    __init__.py, settings.py, urls.py, wsgi.py
+
+> open pycharm terminal
