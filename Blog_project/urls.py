@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from cryptoc.views import index
+from cryptoc.views import aboutus
+from cryptoc.views import contactus
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('crypto/', index),
+    path('about/', aboutus),
+    path('contact/',contactus)
 ]

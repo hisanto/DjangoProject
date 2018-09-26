@@ -1,6 +1,6 @@
 # ENV setup
 >cmd ma new project folder name
-> virtualenv -p path venv
+> virtualenv -p path venv (path = C:\Users\santo\AppData\Local\Programs\Python\Python37-32\python.exe)
 >source venv/bin/activate (for mac/linux)
     venv\Scripts\activate (for WINs)
 > (venv) E:\.. > pip install django
@@ -12,7 +12,7 @@ client request at view and performs operation at model(DB) and responce and give
 #Django Command
 >django-admin (help)
 >django-admin startproject Blog_project . (if . skipped, it just make fodler, dot with manage.py is made)
->dir Blog_project
+    >dir Blog_project
     __init__.py, settings.py, urls.py, wsgi.py
 
     __init__.py:  its just make the package
@@ -25,7 +25,7 @@ client request at view and performs operation at model(DB) and responce and give
         ALLOWED_HOSTS =[]: list domain name or ip by default, its localhost
         INSTALLED_APPS =[..]: list of pages
         MIDDLEWARE =[..] pages lai link garaune with security,
-            Csrfview : form ko input value validate
+            srfview : form ko input value validate
         ROOT_URLCONF : always one, define the patterns
         TEMPLATES :
         WSGI_APPLICATION : defines which server to use
@@ -35,16 +35,34 @@ client request at view and performs operation at model(DB) and responce and give
 
 > open pycharm terminal
     make a file .gitignore then type .idea/ , .venv    to ignore in to git track
-> git add, vommt garnee
+> git add, commit garnee
 > git remote -v is blank so make a repo in github
 then
 >git remote add origin repo url
 >git push -u origin master
 
 
-
+#RUN ( venv must active "(venv) E:\learning\DjangoProject>")
 >python manage.py runserver
     then Browser ma "http://127.0.0.1:8000/admin/" > ctrl + C if to quit
 >db has no table so > python manage.py migrate
 #super user
 >python manage.py createsuperuser
+
+
+#APP creation
+>"pip install requests" send request to then add to requirements.txt  add garne
+>"python manage.py startapp cryptoc" cryptoc is the name of app
+(migration le modal and DB lai glue gar6)
+> for templete creates a templete folder in cryptoc
+view and templates transfiton lai context which is  dictionary
+> templates folder ma ma html code hun6
+> setting.py and url.py  milaye pachi
+    settting.py : 'DIRS': [os.path.join(BASE_DIR,'cryptoc','templates')],
+    url.py : urlpatterns = path('crypto/', index),
+    and add "from cryptoc.views import aboutus"
+
+    note: view.py > template> url.py
+
+> run in browser
+
