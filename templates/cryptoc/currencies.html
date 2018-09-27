@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>World currencies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<table class="table table-bordered table-dark">
+    <thead>
+    <tr>
+        <th scope="col">Rank</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price in USD</th>
+        <th scope="col">Symbol</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for each in data %}
+        <tr {% if each.percent_change_24h.0 == '-' %}
+            class = "text-danger"
+        {% else %}
+            class = "text-success"
+    {% endif %}
+        >
+            <td scope="row">{{each.rank}}</td>
+            <td scope="row">{{each.name}}</td>
+            <td scope="row">{{each.price_usd}}</td>
+            <td scope="row">{{each.symbol}}</td>
+        </tr>
+    {% empty %}
+    <tr><td>NO RESULT FOUND !!!</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

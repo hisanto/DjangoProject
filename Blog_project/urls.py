@@ -18,10 +18,14 @@ from django.urls import path
 from cryptoc.views import index
 from cryptoc.views import aboutus
 from cryptoc.views import contactus
+from cryptoc.views import currencies
+from cryptoc.views import git_hub
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('crypto/', index),
     path('about/', aboutus),
-    path('contact/',contactus)
+    path('contact/',contactus),
+    path('',currencies),
+    path('git/',git_hub)
 ]
