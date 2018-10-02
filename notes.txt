@@ -72,3 +72,18 @@ https://api.github.com/users/hisanto
 https://api.coinmarketcap.com/v1/ticker/
 
 
+#BLOG NEW APP
+>python manage.py startapp Blog
+>if DB related 6 bhane setting ma app add garne
+>models.py ma  DB related class banaune
+>python manage.py makemigrations
+>python manage.py  migrate
+>admin.py ma
+> python manage.py createsuperuser
+
+
+DB QUERY: from basic in console
+>python manage.py shell
+
+
+

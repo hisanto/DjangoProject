@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Articles</title>
+</head>
+<body>
+{%for each in posts%}
+<b>{{each.title}}</b><br>
+<i> --{{each.author.username}},{{each.published_date}}</i><br>
+{{each.text}}
+<hr>
+{%endfor%}
+
+{%for each in comment%}
+<i> --{{each.email}},{{each.comment_date}}</i><br>
+{{each.comment}}
+<hr>
+{%endfor%}
+
+
+</body>
+</html>
