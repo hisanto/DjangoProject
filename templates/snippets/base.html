@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Page</title>
+    {% include 'snippets/_css.html' %}
+</head>
+<body>
+
+{% include 'snippets/_navigation.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </div>
+</div>
+
+<script language="JavaScript" type="application/javascript">
+    {% include  'snippets/_javascripts.html' %}
+</script>
+</body>
+</html>

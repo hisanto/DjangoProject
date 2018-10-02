@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Github Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<table class="table table-sm">
+    <thead>
+    <tr>
+        <th scope="col">UserName</th>
+        <th scope="col">Name</th>
+        <th scope="col">GIT_URL</th>
+        <th scope="col">Followers</th>
+        <th scope="col">Following</th>
+        <th scope="col">Created_on</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td scope="row">{{data.login}}</td>
+            <td scope="row">{{data.name}}</td>
+            <td scope="row"><a href="{{data.html_url}}">{{data.html_url}}</a> </td>
+            <td scope="row">{{data.followers}}</td>
+            <td scope="row">{{data.following}}</td>
+            <td scope="row">{{data.created_at}}</td>
+        </tr>
+    </tbody>
+</table>
+<img src="{{data.avatar_url}}" class="rounded-circle" alt="Responsive image" height = "100" width="100">
+
+</body>
+</html>
