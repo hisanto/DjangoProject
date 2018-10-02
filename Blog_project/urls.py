@@ -1,4 +1,4 @@
-"""Blog_project URL Configuration
+"""blog_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.1/topics/http/urls/
@@ -15,17 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from cryptoc.views import index
-from cryptoc.views import aboutus
-from cryptoc.views import contactus
-from cryptoc.views import currencies
-from cryptoc.views import git_hub
-#from Blog.views import articles
+
 
 urlpatterns = [
-    path ('', include('Blog.urls')),  # url is set in app so do include
+    path('', include('blog.urls')),
+    path('crypto/', include('cryptoc.urls')),
     path('admin/', admin.site.urls),
-    path ('crypto/', include('cryptoc.urls'))
-
-   # path('blog/',articles) #url is set in app
 ]

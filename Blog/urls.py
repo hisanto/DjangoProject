@@ -1,6 +1,8 @@
 from django.urls import path
-from Blog.views import articles
+
+from blog.views import articles, create_article
 
 urlpatterns = [
-    path('blog/',articles),
+    path('', articles, name='blog_index'),
+    path('create/', create_article, name='blog_create')
 ]
