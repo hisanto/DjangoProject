@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Post  # models name
 
 # Create your views here.
@@ -28,3 +28,19 @@ def create_article(request):
                   template_name='blog/blog_create.html',
                   context={}
                   )
+
+def blog_detail(request, post_id):
+    # post = Post.objects.get(id=post_id)
+    # post = get_object_or_404(Post,id=post_id)  # if error aayo bhane 404 error display
+    post = Post.objects.filter(id=post_id).first()  # error not shown , just blank
+    # comment = comments.objects.filter(post=post)
+    ctx={
+        "post":post
+        # "comment" : ---
+    }
+    return render(request,
+                  template_name='blog/blog_detail.html',
+                  context=ctx
+                  )
+
+

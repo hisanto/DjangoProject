@@ -1,0 +1,8 @@
+{%extends 'snippets/base.html' %}
+
+{%block content%}
+    <h1>{{psot.title}}</h1>
+    <small>{{ each.author.username|default:"Guest_user"}} | {{ each.published_date|date:"F,d-l-Y - h A"}}</small>
+    <p>{{ each.body }}</p>
+
+{%endblock content%}

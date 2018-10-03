@@ -1,9 +1,13 @@
 {% extends "snippets/base.html" %}
 
+{% comment %}
+this is comment
+{% endcomment %}
+
 {% block content %}
     {% for each in posts %}
-        <h1>{{ each.title }}</h1>
-        <small>{{ each.author.username }} | {{ each.published_date }}</small>
+        <h1>{{ each.title|upper}}</h1>
+        <small>{{ each.author.username|default:"Guest_user"}} | {{ each.published_date|date:"F,d-l-Y - h A"}}</small>
         <p>{{ each.body }}</p>
         <hr>
     {% endfor %}

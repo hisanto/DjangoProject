@@ -82,8 +82,45 @@ https://api.coinmarketcap.com/v1/ticker/
 > python manage.py createsuperuser
 
 
-DB QUERY: from basic in console
+DB ORM QUERY: from basic in console
 >python manage.py shell
+> from blog.models import Post
+> all_post = Post.objects.all()
+>all_posts.count()
+>print(all_posts.query) # to see the query
 
+>published_post = Post.objects.filters(is_published = True)
+>published_post.count()
 
+>post_by_user_1 = Post.objects.filter(author_id = 1)
+>post_by_user_1.count()
+
+>post_by_user_2 = Post.objects.filter(author_id=2 , is_published=True) # AND (,)
+>print(published_post.query() # to see the query
+
+>contains_blog_word = Post.objects.filter(body__contains='blog') # double underscore
+>contains_blog_word.count()
+>type(contains_blog_word)
+>list(contains_blog_word)
+
+>from django.db.models import Q # to query OR
+>com = Post.objects.filter(Q(title__contains ='blog') | Q(body__contains='test'))
+>print(com.query)
+
+>Post.objects.filter(published_date__year=2018, published_date__month=9)
+
+>Post.objects.filter(author_id=1).exclude(is_published=Flase).
+filter(published_date__month__gte =10)
+
+>p=Post.objects.all()[:2] # limit 2
+
+>Post.objects.order_by('published_date') # ascending order
+>Post.objects.order_by('-published_date') # - descending order
+>Post.objects.all().first() # first record
+>Post.objects.all().last()  #last record
+>Post.objects.filter(title__exact='blog') # exact tile must be '<fddh>'
+>Post.objects.filter(title__iexact='blog') # case insensetive exact
+>Post.objects.filter(author__id__in=[1,2])
+
+Django
 
