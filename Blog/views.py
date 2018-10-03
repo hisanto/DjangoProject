@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Post  # models name
+from .models import Post, Comment  # models name
 
 # Create your views here.
 
@@ -11,7 +11,8 @@ def articles(request):
     }
     return render(request,
                   template_name='blog/blog_index.html',
-                  context=ctx)
+                  context=ctx
+                  )
 
 
 def create_article(request):
@@ -28,6 +29,17 @@ def create_article(request):
                   template_name='blog/blog_create.html',
                   context={}
                   )
+
+
+def article_comment(request):
+    comments = Comment.objects.all()
+
+    ctx ={
+        "comments": comments
+    }
+
+    return render(request, template_name="blog/blog_comment.html", context=ctx)
+
 
 def blog_detail(request, post_id):
     # post = Post.objects.get(id=post_id)

@@ -1,0 +1,17 @@
+{% extends 'snippets/base.html' %}
+
+{% block content %}
+        <form action="{%  url 'blog_comment' %}" method="post">
+            {% csrf_token %}
+            <label for="title">Email</label>
+            <input type="email" id="title" name="email"> <br>
+
+            <label for="title">Comment</label>
+            <textarea id="title" name="comment"> </textarea><br>
+
+            <label for="title">Published Post</label>
+            <input type="number" id="title" name="pub_post" value="1">
+
+            <br><input type="submit" class="btn btn-primary" value="Post">
+        </form>
+{% endblock content %}
