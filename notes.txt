@@ -70,6 +70,8 @@ view and templates transfiton lai context which is  dictionary
 #APIs
 https://api.github.com/users/hisanto
 https://api.coinmarketcap.com/v1/ticker/
+https://simpleisbetterthancomplex.com/references/2016/06/21/date-filter.html
+https://docs.djangoproject.com/en/2.1/ref/templates/builtins/#capfirst
 
 
 #BLOG NEW APP
@@ -79,6 +81,9 @@ https://api.coinmarketcap.com/v1/ticker/
 >python manage.py makemigrations
 >python manage.py  migrate
 >admin.py ma
+    from .models import Post, Comment  # added to display in admin url
+    admin.site.register(Post) # added to post in "http://localhost:8000/admin/"
+    admin.site.register(Comment)
 > python manage.py createsuperuser
 
 

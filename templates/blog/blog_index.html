@@ -5,10 +5,29 @@ this is comment
 {% endcomment %}
 
 {% block content %}
+
     {% for each in posts %}
-        <h1>{{ each.title|upper}}</h1>
-        <small>{{ each.author.username|default:"Guest_user"}} | {{ each.published_date|date:"F,d-l-Y - h A"}}</small>
-        <p>{{ each.body }}</p>
-        <hr>
+        <div class="card" style="margin: 10px">
+            <div class="card-body">
+                <h1>{{ each.title|title}}</h1>
+                <small>{{ each.author.username|default:"Guest_user"}} | {{ each.published_date|date:"F,d-l-Y - h A"}}</small>
+                <p>{{ each.body }}</p>
+                <button type="button" class="btn btn-primary btn-sm">View More</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    View Comments  <span class="badge badge-light">4</span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body" style="margin: 10px">
+                <b><h6>Comments!</h6></b>
+                {% for com in comments %}
+                    {% if each.id == com.post_id %}
+                        <small>{{ com.email}} --[{{ com.comment_date|date:"d/m/Y - h A"}}]</small>
+                        <p><i>{{ com.comment }}</i></p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
     {% endfor %}
 {% endblock content %}

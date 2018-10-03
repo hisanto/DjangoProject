@@ -20,7 +20,7 @@ class Comment(models.Model):
     email = models.EmailField(max_length=50)
     comment = models.CharField(max_length=200)
     comment_date = models.DateTimeField(auto_now_add=True)
-    post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post= models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.email

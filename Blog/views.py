@@ -6,8 +6,10 @@ from .models import Post, Comment  # models name
 
 def articles(request):
     posts = Post.objects.all()
+    comments = Comment.objects.all()
     ctx = {
-        "posts": posts
+        "posts": posts,
+        "comments" : comments
     }
     return render(request,
                   template_name='blog/blog_index.html',
