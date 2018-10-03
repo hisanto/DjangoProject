@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CONTACT_US</title>
-</head>
-<body>
+{% extends 'snippets/base.html' %}
+{% block content %}
 <h1>Contact us</h1></h1>
 <h3>NAME :  {{name}}</h3>
 <h3>Address : {{address}}</h3>
@@ -13,5 +8,5 @@
                 {%endfor%}
 			</ul>
 
-</body>
-</html>
+{%endblock content%}
+

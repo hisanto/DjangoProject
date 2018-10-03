@@ -21,7 +21,7 @@ this is comment
         <div class="collapse" id="collapseExample">
             <div class="card card-body" style="margin: 10px">
                 <b><h6>Comments!</h6></b>
-                {% for com in comments %}
+                  {% for com in comments %}
                     {% if each.id == com.post_id %}
                         <small>{{ com.email}} --[{{ com.comment_date|date:"d/m/Y - h A"}}]</small>
                         <p><i>{{ com.comment }}</i></p>
