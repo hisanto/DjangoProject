@@ -2,6 +2,7 @@
 
 {% comment %}
 this is comment
+
 {% endcomment %}
 
 {% block content %}
@@ -9,10 +10,12 @@ this is comment
     {% for each in posts %}
         <div class="card" style="margin: 10px">
             <div class="card-body">
-                <h1>{{ each.title|title}}</h1>
+                <h1>{{each.title|title}}</a></h1>
                 <small>{{ each.author.username|default:"Guest_user"}} | {{ each.published_date|date:"F,d-l-Y - h A"}}</small>
-                <p>{{ each.body }}</p>
-                <button type="button" class="btn btn-primary btn-sm">View More</button>
+                <p>{{ each.body|truncatechars:150 }}</p>
+                <a href="{% url 'blog_detail' each.id%}">
+                    <button type="button" class="btn btn-primary btn-sm">View More</button>
+                </a>
                 <button type="button" class="btn btn-secondary btn-sm" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                     View Comments  <span class="badge badge-light">4</span>
                 </button>
@@ -24,7 +27,7 @@ this is comment
                   {% for com in comments %}
                     {% if each.id == com.post_id %}
                         <small>{{ com.email}} --[{{ com.comment_date|date:"d/m/Y - h A"}}]</small>
-                        <p><i>{{ com.comment }}</i></p>
+                        <p><b> - </b><i>{{ com.comment }}</i></p>
                     {% endif %}
                 {% endfor %}
             </div>

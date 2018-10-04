@@ -1,8 +1,23 @@
 {%extends 'snippets/base.html' %}
 
 {%block content%}
-    <h1>{{psot.title}}</h1>
-    <small>{{ each.author.username|default:"Guest_user"}} | {{ each.published_date|date:"F,d-l-Y - h A"}}</small>
-    <p>{{ each.body }}</p>
-
+    <h1>{{post.title}}</h1>
+    <small>{{ post.author.username}} | {{ post.published_date|date:"F,d-l-Y - h A"}}</small>
+    <p>{{ post.body }}</p>
+    <br> <hr>
+    <h6>Comments!!!</h6>
+     {% for com in comments %}
+            <small>{{ com.email}} --[{{ com.comment_date|date:"d/m/Y - h A"}}]</small>
+            <p><b> - </b><i>{{ com.comment }}</i></p>
+    {% endfor %}
+    <br><hr>
+    <form action="{% url 'add_comment'%}" method="POST">
+        {% csrf_token %}
+        <label for="title">Email</label>
+        <input type="email" id="title" name="email"> <br>
+        <label for="title">Comment</label>
+        <textarea id="title" name="comment"> </textarea><br>
+        <input type="hidden" name="bid" value="{{post.id}}">
+        <br><input type="submit" class="btn btn-primary btn-sm " value="Comment">
+        </form>
 {%endblock content%}

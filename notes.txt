@@ -127,5 +127,9 @@ filter(published_date__month__gte =10)
 >Post.objects.filter(title__iexact='blog') # case insensetive exact
 >Post.objects.filter(author__id__in=[1,2])
 
-Django
+SECRECT KEY
+--------------
+>pip install python-decouple
+>settting.py ma : from decouple import config
+
 

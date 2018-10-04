@@ -25,10 +25,25 @@ def create_article(request):
 
         post = Post.objects.create(title=title, body=body, author=user, is_published=True)
 
-        return redirect('blog_index')
+        return redirect('blog_detail')
 
     return render(request,
                   template_name='blog/blog_create.html',
+                  context={}
+                  )
+
+
+def add_comment(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        comment = request.POST.get('comment')
+        bid = request.POST.get('bid')
+
+        cmt = Comment.objects.create(email=email, comment=comment, post_id=bid)
+        return redirect('blog_index')
+
+    return render(request,
+                  template_name='blog/add_comment.html',
                   context={}
                   )
 
@@ -46,11 +61,11 @@ def article_comment(request):
 def blog_detail(request, post_id):
     # post = Post.objects.get(id=post_id)
     # post = get_object_or_404(Post,id=post_id)  # if error aayo bhane 404 error display
-    post = Post.objects.filter(id=post_id).first()  # error not shown , just blank
-    # comment = comments.objects.filter(post=post)
+    post = Post.objects.filter(id = post_id).first()  # error not shown , just blank
+    comment = Comment.objects.filter(post_id = post_id)
     ctx={
-        "post":post
-        # "comment" : ---
+        "post" : post,
+        "comments" : comment
     }
     return render(request,
                   template_name='blog/blog_detail.html',
