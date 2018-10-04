@@ -7,6 +7,7 @@ from .models import Post, Comment  # models name
 def articles(request):
     posts = Post.objects.all()
     comments = Comment.objects.all()
+
     ctx = {
         "posts": posts,
         "comments" : comments
@@ -25,7 +26,7 @@ def create_article(request):
 
         post = Post.objects.create(title=title, body=body, author=user, is_published=True)
 
-        return redirect('blog_detail')
+        return redirect('blog_index')
 
     return render(request,
                   template_name='blog/blog_create.html',
