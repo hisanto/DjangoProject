@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('Blog.urls')),
     path('crypto/', include('cryptoc.urls')),
     path('admin/', admin.site.urls),
+    path('csv/', include('etl.urls')),
 ]

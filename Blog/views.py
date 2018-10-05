@@ -40,9 +40,8 @@ def add_comment(request):
         comment = request.POST.get('comment')
         bid = request.POST.get('bid')
 
-        cmt = Comment.objects.create(email=email, comment=comment, post_id=bid)
-        return redirect('blog_index')
-
+        cmt = Comment.objects.create(email=email, comment=comment, post_id=int(bid))
+        return redirect(to='blog_detail', post_id = int(bid))
     return render(request,
                   template_name='blog/add_comment.html',
                   context={}

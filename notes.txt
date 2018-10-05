@@ -133,3 +133,23 @@ SECRECT KEY
 >settting.py ma : from decouple import config
 
 
+NEW APP "etl"
+=====================
+>main project ko setting.py
+INSTALLED_APPS = [
+    ...
+    'etl',
+]
+>etl ko admin.py
+from .models import CsvData
+admin.site.register(CsvData)
+
+> etl ko models.py DB related
+>makemigrate > migrate
+
+> etl ko views.py
+
+> templete ma etl folder > templete html file
+>etl ko url.py banayeraa
+
+
