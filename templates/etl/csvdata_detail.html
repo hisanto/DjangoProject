@@ -1,0 +1,19 @@
+{% extends 'snippets/base.html' %}
+
+{% block content %}
+
+   <table class="table">
+       <tr>
+           <td>Name</td><td>{{object.name}}</td>
+       </tr>
+       <tr>
+           <td>IPV4</td><td>{{object.ipv4}}</td>
+       </tr>
+       <tr>
+           <td>MAC-Address</td><td>{{object.mac_address}}</td>
+       </tr>
+
+   </table>
+<!--<a class = "btn" href="{% url 'etl_csvdata_update' object.pk %}"> Edit</a>-->
+
+{% endblock content %}
