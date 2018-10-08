@@ -2,19 +2,22 @@
 {% load static %}
 
 {%block content%}
-    <table class = 'table'>
-        <a href="{% url 'csvdata_create' %}">
-                <img src="{% static 'images/add_item.png' %}" alt="add new" style="width: 30px;height: 30px"> </a>
-        <thead>
+    <a href="{% url 'csvdata_create' %}">
+        <img src="{% static 'images/add_item.png' %}" alt="add new" style="width: 30px;height: 30px">
+    </a>
+    <a href="#">
+        <img src="{% static 'images/search_item.png' %}" alt="add new" style="width: 30px;height: 30px">
+    </a>
+    <table class = 'table table-striped table-bordered' style="margin-top:15px">
+    <thead>
         <tr>
             <th>Name</th>
             <th>IP Address</th>
             <th>MAC Address</th>
-
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
-
         {% comment %}
             {%for data in csv_data %}
         {% endcomment %}
@@ -23,7 +26,14 @@
                 <td>{{data.name}}</td>
                 <td>{{data.ipv4}}</td>
                 <td>{{data.mac_address}}</td>
-                <td></td>
+                <td>
+                    <a href="#">
+                        <img src="{% static 'images/edit_item.png' %}" alt="edit record" style="width: 30px;height: 30px">
+                    </a>
+                    <a href = "#">
+                        <img src="{% static 'images/delete_item.png' %}" alt="delete record" style="width: 25px;height:25px">
+                    </a>
+                </td>
             </tr>
         {%endfor%}
         </tbody>
