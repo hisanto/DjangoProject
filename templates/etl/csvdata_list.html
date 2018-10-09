@@ -1,13 +1,17 @@
+
 {% extends "snippets/base.html" %}
 {% load static %}
-
 {%block content%}
     <a href="{% url 'csvdata_create' %}">
-        <img src="{% static 'images/add_item.png' %}" alt="add new" style="width: 30px;height: 30px">
+        <img src="{% static 'images/add_item.png' %}" alt="add new" class="img_icon">
+    </a>
+    <a href="{% url 'csvdata_list' %}">
+        <img src="{% static 'images/refresh.png' %}" alt="add new" class="img_icon">
     </a>
     <a href="#">
-        <img src="{% static 'images/search_item.png' %}" alt="add new" style="width: 30px;height: 30px">
+        <img src="{% static 'images/search_item.png' %}" alt="add new" class="img_icon">
     </a>
+    <a href="{% url 'upload_csv_file' %}" class="btn btn-primary btn-sm"> Upload csv file</a>
     <table class = 'table table-striped table-bordered' style="margin-top:15px">
     <thead>
         <tr>
@@ -23,15 +27,15 @@
         {% endcomment %}
         {%for data in object_list %}
             <tr>
-                <td>{{data.name}}</td>
+                <td>{{data.name}}</a></td>
                 <td>{{data.ipv4}}</td>
                 <td>{{data.mac_address}}</td>
                 <td>
-                    <a href="#">
-                        <img src="{% static 'images/edit_item.png' %}" alt="edit record" style="width: 30px;height: 30px">
+                    <a href="{% url 'etl_csvdata_update' data.id %}">
+                        <img src="{% static 'images/edit_item.png' %}" alt="edit record" class="img_icon">
                     </a>
-                    <a href = "#">
-                        <img src="{% static 'images/delete_item.png' %}" alt="delete record" style="width: 25px;height:25px">
+                    <a href = "{% url 'etl_csvdata_delete' data.id %}">
+                        <img src="{% static 'images/delete_item.png' %}" alt="delete record" class="img_icon">
                     </a>
                 </td>
             </tr>

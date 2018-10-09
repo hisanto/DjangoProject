@@ -1,6 +1,7 @@
 {% extends 'snippets/base.html' %}
 
 {% block content %}
+    <a  href="{% url 'csvdata_list' %}">GO BACK</a>
 
    <table class="table">
        <tr>
@@ -14,6 +15,6 @@
        </tr>
 
    </table>
-<!--<a class = "btn" href="{% url 'etl_csvdata_update' object.pk %}"> Edit</a>-->
+<a class = "btn" href="{% url 'etl_csvdata_update' object.pk %}"> Edit</a>
 
 {% endblock content %}

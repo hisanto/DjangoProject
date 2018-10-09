@@ -1,0 +1,10 @@
+{% extends 'snippets/base.html' %}
+
+{% block content %}
+    <form action="{% url 'upload_csv_file' %}" method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <input type="file" class="form-control" name="file_input_name">
+        <input type="submit" class="btn btn-primary btn-sm" value="Upload">
+    </form>
+
+{% endblock content %}

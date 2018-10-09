@@ -5,6 +5,11 @@
         {% csrf_token %}
         {{form.as_p}}
         <button class="btn btn-success" type="submit">Submit</button>
+        {% if  form.instace.pk %}
+        <a class="btn btn-danger" href ="{% url 'etl_csvdata_detail' form.instance.pk %}">Cancel</a>
+        {% else %}
+        <a class="btn btn-danger" href ="{% url 'csvdata_list'%}">Cancel</a>
+        {% endif %}
     </form>
 
 {% endblock content %}

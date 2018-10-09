@@ -13,7 +13,7 @@ class CsvData(models.Model):
         ordering = ('name',)
 
     def __str__(self):
-        return  self.name + " - " + self.ipv4
+        return  self.name + " - " + self.ipv4  #{{object}}
 
     def get_absolute_url(self):
         return reverse('etl_csvdata_detail',args=(self.id,))

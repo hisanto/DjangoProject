@@ -1,0 +1,9 @@
+{% extends 'snippets/base.html' %}
+{% block content %}
+<form method ="POST">
+    {%csrf_token %}
+    <p> Are you sure you want to delete "{{object}}" ?</p>
+    <input class="btn btn-danger btn-sm" type="submit" value="OK">
+</form>
+<a href="{% url 'csvdata_list'%}">Cancel</a>
+{% endblock content %}

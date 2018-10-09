@@ -1,3 +1,9 @@
 h1 {
     color: #993333;
 }
+
+.img_icon {
+    height: 25px;
+    width: 25px;
+    margin:5px;
+}
