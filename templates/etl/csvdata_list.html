@@ -34,12 +34,39 @@
                     <a href="{% url 'etl_csvdata_update' data.id %}">
                         <img src="{% static 'images/edit_item.png' %}" alt="edit record" class="img_icon">
                     </a>
-                    <a href = "{% url 'etl_csvdata_delete' data.id %}">
-                        <img src="{% static 'images/delete_item.png' %}" alt="delete record" class="img_icon">
-                    </a>
+                    <!--<a href = "{% url 'etl_csvdata_delete' data.id %}">-->
+                        <img src="{% static 'images/delete_item.png' %}"
+                             alt="delete record" class="img_icon"
+                             onclick="deleteData({{ data.id }})">
+                    <!--</a>-->
                 </td>
             </tr>
         {%endfor%}
         </tbody>
     </table>
 {%endblock content%}
+
+{% block extraJS %}
+<script>
+    function deleteData(dataID) {
+        var flag = confirm("DO you want to delete this?")
+        if(flag){
+            $.ajax({
+                type: "POST",
+                data:{
+                    csrfmiddlewaretoken:'{{ csrf_token }}'
+                },
+                url:"{% url 'etl_csvdata_delete' 1234 %}".replace(1234,dataID),
+                success: function(result){
+                    console.log(result);
+                    window.location.reload();
+                },
+                error:function (error) {
+                    console.log(error);
+                }
+            })
+        }
+
+    }
+</script>
+{% endblock extraJS %}
