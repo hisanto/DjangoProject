@@ -1,6 +1,38 @@
 {%extends 'snippets/base.html' %}
+{% load blog_tags %}
 
 {%block content%}
+<hr>
+<div class ="card">
+    <div class ="card-body">
+        <div class ="class-title">
+            Latest Post:
+        </div>
+        <div class="class-text">
+            {%get_latest 5 %}
+        </div>
+    </div>
+</div>
+<div class ="card">
+    <div class ="card-body">
+        <div class ="class-title">
+            popular Post:
+        </div>
+        <div class="class-text">
+            <ul>
+                {% get_popular 5 as popular %}
+                {%for post in popular %}
+                    <li>
+                        <a href="{% url 'blog_detail' post.id %}">{{post.title|my_filter}}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+            {%get_latest 5 %}
+        </div>
+    </div>
+</div>
+<hr> {% get_latest %}
+<hr>
     <h1>{{post.title}}</h1>
     <small>{{ post.author.username}} | {{ post.published_date|date:"F,d-l-Y - h A"}}</small>
     <p>{{ post.body }}</p>

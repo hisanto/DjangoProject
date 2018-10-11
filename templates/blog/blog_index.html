@@ -1,12 +1,16 @@
 {% extends "snippets/base.html" %}
+{% load blog_tags %}
 
 {% comment %}
 this is comment
-
 {% endcomment %}
 
 {% block content %}
+<hr>
+<small>This blog has {% post_count %} blog post(s).</small>
+<hr>
 
+<hr>
     {% for each in posts %}
         <div class="card" style="margin: 10px">
             <div class="card-body">
