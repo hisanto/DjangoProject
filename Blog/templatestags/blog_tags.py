@@ -1,7 +1,7 @@
 from django import template
 from django.db.models import Count
-
 from ..models import Post
+
 register = template.Library()
 
 #Model to templete bridge
