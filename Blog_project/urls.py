@@ -22,4 +22,5 @@ urlpatterns = [
     path('crypto/', include('cryptoc.urls')),
     path('admin/', admin.site.urls),
     path('csv/', include('etl.urls')),
+    path('accounts/', include('auth_login.urls'))
 ]

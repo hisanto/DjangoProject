@@ -46,7 +46,7 @@ then
 >python manage.py runserver
     then Browser ma "http://127.0.0.1:8000/admin/" > ctrl + C if to quit
 >db has no table so > python manage.py migrate
-#super user
+#super usercd
 >python manage.py createsuperuser
 
 
@@ -153,3 +153,44 @@ admin.site.register(CsvData)
 >etl ko url.py banayeraa
 
 
+
+#after Dashain
+# REST API
+1. Install Django rest framework
+    pip install_rest_framework
+2. Add django_rest_framework to INSTALLED_APPS
+3. Create in APP:
+    a. API endpoint(URL)
+    b. Create Serializer (like  Form) - create new file (serializers.py) object lai json format ma convert gar6
+    c. Create View for API (api.py in APP) also called view set
+4. Install django CORS to exposed API to 3rd party
+
+5. REST API Documentation: https://www.django-rest-framework.org/
+
+6. Django CORS documentation: https://github.com/ottoyiu/django-cors-headers
+
+https://myaccount.google.com/lesssecureapps
+
+#MYSQL:
+> Install XAMPP (for mysql)
+> cmd : "pip install mysqlclient"
+>setting.py ko DATABASE setup
+>python manager.py migrate
+>python manager.py createsuperuser
+>python manager.py runserver
+
+#EMAIL
+>setting.py ko DATABASE setup
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = 'pariyarsanto@gmail.com'
+    EMAIL_HOST_PASSWORD = 'enter your password'
+    EMAIL_PORT = 587
+>templates > urls >views banaunee
+
+
+Post.author.__email
+
+
+djangosites.org

@@ -1,6 +1,6 @@
 from django.urls import path
 
-# from .views import CsvDataView
+from .views import CsvDataView
 from . import views
 
 urlpatterns = [

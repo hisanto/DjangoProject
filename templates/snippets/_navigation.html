@@ -35,6 +35,15 @@
                 <a class="nav-link disabled" href="#">Disabled</a>
             </li>
         </ul>
+        <ul>
+            {% if request.user.is_authenticated %}
+                {{ request.user.username}}
+                <a href="{% url 'logout_user' %}" class="btn btn-danger btn-sm">LogOut</a>
+            {% else %}
+                <a href="{% url 'login_form' %}" class="btn btn-primary btn-sm">LogIn</a>
+            {% endif %}
+        </ul>
+
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

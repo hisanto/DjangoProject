@@ -1,5 +1,6 @@
 import csv, json
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -7,6 +8,7 @@ from django.views import View
 from django.views.generic import ListView, CreateView, DetailView , UpdateView ,DeleteView
 from .models import CsvData
 from .forms import CsvDataForm
+
 
 
 # Create your views here.
@@ -28,7 +30,7 @@ class CsvDataListView(ListView):
 
 
 # classbased view for forms
-class CsvDataCreatView(CreateView):
+class CsvDataCreatView(LoginRequiredMixin.CreateView):
     model = CsvData  # k sanga depend 6 bhanne
     form_class = CsvDataForm
 

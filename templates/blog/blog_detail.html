@@ -1,55 +1,93 @@
-{%extends 'snippets/base.html' %}
+{% extends 'snippets/base.html' %}
 {% load blog_tags %}
 
-{%block content%}
-<hr>
-<div class ="card">
-    <div class ="card-body">
-        <div class ="class-title">
-            Latest Post:
-        </div>
-        <div class="class-text">
-            {%get_latest 5 %}
-        </div>
-    </div>
-</div>
-<div class ="card">
-    <div class ="card-body">
-        <div class ="class-title">
-            popular Post:
-        </div>
-        <div class="class-text">
-            <ul>
-                {% get_popular 5 as popular %}
-                {%for post in popular %}
-                    <li>
-                        <a href="{% url 'blog_detail' post.id %}">{{post.title|my_filter}}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            {%get_latest 5 %}
-        </div>
-    </div>
-</div>
-<hr> {% get_latest %}
-<hr>
-    <h1>{{post.title}}</h1>
-    <small>{{ post.author.username}} | {{ post.published_date|date:"F,d-l-Y - h A"}}</small>
+{% block content %}
+
+    <h1>{{ post.title }}</h1>
+    <small>{{ post.author.username }} {{ post.published_date|date:"F d, l, Y - h A" }}
+        <button class="btn btn-primary" role="button" onclick="likeThis()">
+            <i class="fa fa-1x fa-thumbs-up"></i>
+        </button>
+    </small>
     <p>{{ post.body }}</p>
-    <br> <hr>
-    <h6>Comments!!!</h6>
-     {% for com in comments %}
-            <small>{{ com.email}} --[{{ com.comment_date|date:"d/m/Y - h A"}}]</small>
-            <p><b> - </b><i>{{ com.comment }}</i></p>
-    {% endfor %}
-    <br><hr>
-    <form action="{% url 'add_comment'%}" method="POST">
-        {% csrf_token %}
-        <label for="title">Email</label>
-        <input type="email" id="title" name="email"> <br>
-        <label for="title">Comment</label>
-        <textarea id="title" name="comment"> </textarea><br>
-        <input type="hidden" name="bid" value="{{post.id}}">
-        <br><input type="submit" class="btn btn-primary btn-sm " value="Comment">
-        </form>
-{%endblock content%}
+    <small><span class="text-primary" id="likes">{{ post.num_likes }} </span> likes!</small>
+
+    <hr>
+    <div class="card-deck">
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                Latest Posts
+            </div>
+            <div class="card-text">
+                {% get_latest 5 %}
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                popular Posts
+            </div>
+            <div class="card-text">
+                <ul>
+                    {% get_popular 5 as popular %}
+                    {% for post in popular %}
+                        <li>
+                            <a href="{% url 'blog_detail' post.id %}">{{ post.title|my_filter }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form action="{% url "add_comment" %}" method="post">
+                {% csrf_token %}
+                <input type="email" placeholder="Enter email address" name="email" class="form-control">
+                <textarea name="comment_body" id="" cols="10" rows="5" class="form-control"></textarea>
+                <input type="hidden" name="post_id" value="{{ post.id }}">
+                <input type="submit" class="btn btn-secondary" value="Comment">
+            </form>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-6">
+                Comments:
+                {% for each_comment in comments %}
+                    By: {{ each_comment.email }}<br>
+                    Comment: {{ each_comment.comment_body }}
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block extraJS %}
+    <script>
+        function likeThis() {
+            $.ajax({
+                type: "POST",
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                url: "{% url 'like_post' post.id %}",
+                success: function (result) {
+                    var selector = "#likes";
+                    $(selector).empty();
+                    $(selector).html(result["new_likes_count"]); // we are getting this from blog.views.like_post function
+                }
+            })
+        }
+    </script>
+{% endblock extraJS %}
