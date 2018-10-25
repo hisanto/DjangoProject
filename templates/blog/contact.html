@@ -1,0 +1,24 @@
+{% extends 'snippets/base.html' %}
+
+{% block content %}
+Contact US:
+
+    <form action="{% url 'contact' %}" method="post">
+    {% csrf_token %}
+        <p>
+            <label for="name">Name:</label>
+            <input type="text" name="name" required id="name">
+        </p>
+        <p>
+            <label for="email">Email:</label>
+            <input type="email" name="email" required id="email">
+        </p>
+
+        <p>
+            <label for="message">Message:</label>
+            <textarea name="message" required id="message" cols="40" rows="10" maxlength="200"></textarea>
+        </p>
+
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+{% endblock content %}
